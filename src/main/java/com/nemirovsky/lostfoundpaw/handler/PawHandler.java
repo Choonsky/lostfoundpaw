@@ -27,7 +27,7 @@ public class PawHandler {
         IReactiveDataDriverContextVariable reactiveDataDrivenMode =
                 new ReactiveDataDriverContextVariable(pawService.getAllPaws(), 3);
         final Map<String, IReactiveDataDriverContextVariable> model =
-                Collections.singletonMap("pets", reactiveDataDrivenMode);
+                Collections.singletonMap("paws", reactiveDataDrivenMode);
         return ServerResponse.ok().contentType(MediaType.TEXT_HTML).render("index", model);
     }
 
