@@ -12,7 +12,7 @@ server:
 
 spring:
   application:
-    name: lostfoundpets
+    name: lostfoundpaw
   webflux:
     base-path: /
   # data:

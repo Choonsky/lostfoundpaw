@@ -1,7 +1,7 @@
 package com.nemirovsky.lostfoundpaw.service;
 
-import com.nemirovsky.lostfoundpaw.model.Pet;
-import com.nemirovsky.lostfoundpaw.repository.PetRepository;
+import com.nemirovsky.lostfoundpaw.model.Paw;
+import com.nemirovsky.lostfoundpaw.repository.PawRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
@@ -18,42 +18,42 @@ import java.util.Collections;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class PetService {
+public class PawService {
 
     private final ReactiveMongoTemplate reactiveMongoTemplate;
-    private final PetRepository petRepository;
+    private final PawRepository pawRepository;
 
-    public Mono<Pet> createPet(Pet pet) {
-        return petRepository.save(pet);
+    public Mono<Paw> createPaw(Paw paw) {
+        return pawRepository.save(paw);
     }
 
-    public Flux<Pet> getAllPets() {
+    public Flux<Paw> getAllPaws() {
         //To simulate big list of data, streaming with 1-second delay, use
         //return petRepository.findAll().delayElements(Duration.ofSeconds(1));
-        return petRepository.findAll();
+        return pawRepository.findAll();
     }
 
-    public Mono<Pet> findById(String petId) {
-        return petRepository.findById(petId);
+    public Mono<Paw> findById(String pawId) {
+        return pawRepository.findById(pawId);
     }
 
-    public Mono<Pet> updatePet(String petId, Pet pet) {
-        return petRepository.findById(petId)
+    public Mono<Paw> updatePaw(String pawId, Paw paw) {
+        return pawRepository.findById(pawId)
                 .flatMap(p -> {
-                    p.setName(pet.getName());
+                    p.setName(paw.getName());
                     // TODO: add update other fields
-                    return petRepository.save(p);
+                    return pawRepository.save(p);
                 });
     }
 
-    public Mono<Pet> deletePet(String petId) {
-        return petRepository.findById(petId)
-                .flatMap(pet -> petRepository.delete(pet)
-                        .then(Mono.just(pet)));
+    public Mono<Paw> deletePaw(String pawId) {
+        return pawRepository.findById(pawId)
+                .flatMap(paw -> pawRepository.delete(paw)
+                        .then(Mono.just(paw)));
     }
 
     // Example with MongoTemplate query
-    public Flux<Pet> fetchPets(User user) {
+    public Flux<Paw> fetchPaws(User user) {
         Query query = new Query()
                 .with(Sort
                         .by(Collections.singletonList(Sort.Order.asc("created_time")))
@@ -64,6 +64,6 @@ public class PetService {
         );
 
         return reactiveMongoTemplate
-                .find(query, Pet.class);
+                .find(query, Paw.class);
     }
 }

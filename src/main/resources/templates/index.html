@@ -16,12 +16,12 @@
         <div class="col-8">
             <h2 class="text-center">LostFoundPaws near you</h2>
             <div class="row">
-                <div class="col-xl-4" th:each="pet : ${pets}">
-                    <a th:href="@{'/pet/' + ${pet.id}}">
+                <div class="col-xl-4" th:each="paw : ${paws}">
+                    <a th:href="@{'/paw/' + ${paw.id}}">
                     <div class="product-container p-3 border bg-light pet-parent">
-                        <img th:src="@{'/images/350x400/' + ${pet.id} + '_A_350x400.jpg'}" th:alt="${pet.id}">
-                        <div th:text="${pet.petStatus}"
-                             th:class="${pet.petStatus} + ' bottom-right rotated font-weight-bold px-36'"></div>
+                        <img th:src="@{'/images/350x400/' + ${paw.id} + '_A_350x400.jpg'}" th:alt="${paw.id}">
+                        <div th:text="${paw.pawStatus}"
+                             th:class="${paw.pawStatus} + ' bottom-right rotated font-weight-bold px-36'"></div>
                     </div>
                     </a>
                 </div>

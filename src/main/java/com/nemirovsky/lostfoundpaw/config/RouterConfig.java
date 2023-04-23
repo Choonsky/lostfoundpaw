@@ -1,6 +1,6 @@
 package com.nemirovsky.lostfoundpaw.config;
 
-import com.nemirovsky.lostfoundpaw.handler.PetHandler;
+import com.nemirovsky.lostfoundpaw.handler.PawHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -16,13 +16,13 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouterConfig {
 
     @Bean
-    RouterFunction<ServerResponse> routes(PetHandler handler) {
-        return route(GET("/pets").and(accept(MediaType.APPLICATION_JSON)), handler::getAllPets)
+    RouterFunction<ServerResponse> routes(PawHandler handler) {
+        return route(GET("/paws").and(accept(MediaType.APPLICATION_JSON)), handler::getAllPaws)
                 .andRoute(GET("/").and(accept(MediaType.TEXT_HTML)), handler::mainPage)
-                .andRoute(GET("/pet/{petId}").and(accept(MediaType.TEXT_HTML)), handler::getPetById)
-                .andRoute(POST("/pet").and(accept(MediaType.APPLICATION_JSON)), handler::create)
-                .andRoute(PUT("/pet/{petId}").and(contentType(MediaType.APPLICATION_JSON)), handler::updatePetById)
-                .andRoute(DELETE("/pet/{userId}").and(accept(MediaType.APPLICATION_JSON)), handler::deletePetById);
+                .andRoute(GET("/paw/{pawId}").and(accept(MediaType.TEXT_HTML)), handler::getPawById)
+                .andRoute(POST("/paw").and(accept(MediaType.APPLICATION_JSON)), handler::create)
+                .andRoute(PUT("/paw/{pawId}").and(contentType(MediaType.APPLICATION_JSON)), handler::updatePawById)
+                .andRoute(DELETE("/paw/{userId}").and(accept(MediaType.APPLICATION_JSON)), handler::deletePawById);
     }
     @Bean
     public RouterFunction<ServerResponse> staticResourceRouter() {

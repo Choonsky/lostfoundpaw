@@ -3,7 +3,7 @@ package com.nemirovsky.lostfoundpaw.model;
 import lombok.Getter;
 
 @Getter
-public enum PetSpecies {
+public enum PawSpecies {
 
     CAT("Cat"),
     DOG ("Dog"),
@@ -13,7 +13,7 @@ public enum PetSpecies {
     OTHER ("Other animal");
     private final String text;
 
-    PetSpecies(String text) {
+    PawSpecies(String text) {
         this.text = text;
     }
 }

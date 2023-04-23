@@ -44,6 +44,6 @@ public class MongoConfig {
 
     @Bean
     public ReactiveMongoTemplate reactiveMongoTemplate() {
-        return new ReactiveMongoTemplate(mongo(), "lostfoundpets");
+        return new ReactiveMongoTemplate(mongo(), "lostfoundpaw");
     }
 }
