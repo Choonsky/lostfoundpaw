@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>LostFoundPaws main page</title>
+    <!--/*/ <th:block th:insert="~{head :: head}"/> /*/-->
+</head>
+<body id="samples">
+<!--
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Home</a>
+</nav>
+-->
+<div th:replace="~{menu :: menu}"></div>
+
+<div id="content" class="container-fluid px-4">
+    <div class="row justify-content-center gx-5">
+        <div class="col-8">
+            <h2 class="text-center">LostFoundPaws near you</h2>
+            <div class="row">
+                <div class="col-xl-4" th:each="pet : ${pets}">
+                    <a th:href="@{'/pet/' + ${pet.id}}">
+                    <div class="product-container p-3 border bg-light pet-parent">
+                        <img th:src="@{'/images/350x400/' + ${pet.id} + '_A_350x400.jpg'}" th:alt="${pet.id}">
+                        <div th:text="${pet.petStatus}"
+                             th:class="${pet.petStatus} + ' bottom-right rotated font-weight-bold px-36'"></div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!--/*/ <th:block th:insert="~{footer :: footer}"/> /*/-->
+</html>
+
+
+<!--
+
+Inline
+_[_[_$_{myBean.value}_]_]_
+
+    <div th:unless="${#authorization.expression('isAuthenticated()')}" class="text fw-light fs-6 lh-1">
+        <p>Hello!</p>
+        <p>If you're viewing this page then you have successfully configured and started this example server.</p>
+        <p>You're not authenticated!</p>
+        <p>When you click the login button below, you will be redirected to the login page on your Okta org. After you
+            authenticate, you will be returned to this application.</p>
+    </div>
+
+    <div th:if="${#authorization.expression('isAuthenticated()')}" class="text fw-light fs-6 lh-1">
+        <p>Welcome home, <span th:text="${#authentication.principal.name}">Joe Coder</span>!</p>
+        <p>You have successfully authenticated against your Okta org, and have been redirected back to this
+            application.</p>
+    </div>
+
+    <form th:unless="${#authorization.expression('isAuthenticated()')}" method="get"
+          th:action="@{/oauth2/authorization/okta}">
+        <button id="login-button" class="btn btn-primary" type="submit">Sign In</button>
+    </form>
+-->

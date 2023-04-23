@@ -1,0 +1,59 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body id="samples">
+<nav class="navbar border mb-4 navbar-expand-lg navbar-light bg-light" th:fragment="menu">
+    <div class="container-fluid align-items-end">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse align-bottom align-self-end">
+            <ul class="navbar-nav nav-fill w-100">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Russia, Novosibirsk</a>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/images/lostfoundpets_logo_small.png}" alt="LostFoundPaws logo 1" width="100"
+                 height="64"/>
+            LostFoundPaws
+        </a>
+        <div class="collapse navbar-collapse align-bottom">
+            <ul class="navbar-nav nav-fill w-100">
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Login</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        EN/RU
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">EN</a>
+                        <a class="dropdown-item" href="#">RU</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <form class="input-group mb-3">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <!--
+        <form class="d-flex" method="post" th:action="@{/logout}"
+              th:if="${#authorization.expression('isAuthenticated()')}">
+          <input class="form-control me-2" type="hidden" th:name="${_csrf.parameterName}"
+                 th:value="${_csrf.token}"/>
+          <button id="logout-button" type="submit" class="btn btn-danger">Logout</button>
+        </form>
+        -->
+    </div>
+</nav>
+</body>
+</html>
